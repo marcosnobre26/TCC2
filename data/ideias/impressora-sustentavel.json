@@ -1,0 +1,23 @@
+{
+    "id": "impressora-sustentavel",
+    "name": "PrePean - Impressora que não utiliza tinta nem papel",
+    "description": "Desenvolver uma Impressora, chamada PrePean, que possa trabalha com recursos sustentáveis, gerando beneficios para a sociedade Palmense. Diferente das convencionais, a nossa impressora utiliza uma peça térmica para fazer as impressões em folhas plásticas feitas especialmente para isso. Além de serem à prova d’água, elas podem ser facilmente apagadas. É só colocá-las novamente na impressora que, através de outra temperatura, a próxima impressão ficará no lugar da anterior.",
+    "area": "Sustentabilidade",
+    "image": "img/ideias/impressora-sustentavel.jpg",
+    "skills": [
+      "Empreendedor",
+      "Inovador",
+      "Construtor"
+    ],
+    "vote": 19,
+    "participants":[
+      "Fernando Silva Noleto",
+      "Rogerio Silva Leite",
+      "Leide Pereira Silva",
+      "Samuel Carlos",
+      "Fátima Cunha",
+      "Sara de Melo Silva",
+      "Jonas Barros Junior",
+      "Victor Hugo Souza"
+    ]
+}

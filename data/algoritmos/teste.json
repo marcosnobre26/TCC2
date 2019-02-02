@@ -1,0 +1,15 @@
+[
+    {"id":"113000",
+      "name":"Size",
+      "values":
+          [{"id":"92029","name":"Size A", "tempo":"tempo A"},
+           {"id":"92030","name":"Size B", "tempo":"tempo B"},
+           {"id":"92031","name":"Size C", "tempo":"tempo C"}]
+    },
+    {"id":"113002",
+      "name":"Color",
+      "values":
+          [{"id":"94029","name":"Blue"},
+           {"id":"94030","name":"Black"}]
+    }
+]

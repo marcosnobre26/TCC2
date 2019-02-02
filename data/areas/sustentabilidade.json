@@ -1,0 +1,10 @@
+{
+  "id": "sustentabilidade",
+  "nome": "Sustentabilidade",
+  "descricao": "Sustentabilidade é definir ações e atividades humanas que visam suprir as necessidades atuais dos seres humanos, sem comprometer o futuro das próximas gerações.",
+  "image":"img/areas/natureza.jpg",
+  "ideiasL": [
+      "Sustentabilidade Ambiental - Recursos Hídricos",
+      "PrePean - Impressora que não utiliza tinta nem papel"
+  ]
+}

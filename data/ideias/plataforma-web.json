@@ -1,0 +1,21 @@
+{
+    "id": "plataforma-web",
+    "name": "Ambientes virtuais para pessoas especiais",
+    "description": "Desenvolver um ambiente virutal de aprendizagem interativo e adequado para pessoas que possuem deficiências especiais. Para que esses tipos de pessoas, tem a oportunidade de estarem mais em contato com a nossa tecnologia atual.",
+    "area": "Tecnologia",
+    "image": "img/ideias/plataforma-web.jpg",
+    "skills": [
+      "Programar",
+      "Iniciativa",
+      "Aprender"
+    ],
+    "vote": 29,
+    "participants":[
+      "Marcela Nunes Kuin",
+      "Paulo Junior Mestaki",
+      "Ricardo Oliveira Moura",
+      "Fulano Ciclano de Xaveno",
+      "Rodrigo Nunes Beel",
+      "Mateus Abrantes"
+    ]
+}

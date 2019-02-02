@@ -1,0 +1,154 @@
+<div class = "page-header" style="height: 20px;">
+<nav class="navbar navbar-default navbar-fixed-top" style="background-color:#7386D5; color: white;">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" style="color: white; font-weight: bold;" href="#/dashboard">Início</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">      
+      <ul class="nav navbar-nav navbar-right">
+        <li><a style="color: white;" href="#/criar-exercicios">Criar Exercícios</a></li>         
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</div>
+<div class="row">
+    <div class="col-md-2">
+    <h1 style="font-weight: bold; text-align: center;">Algoritmo:</h1>
+    <hr>
+        <div id="MainMenu">
+            <div class="list-group panel">
+                <a href="" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" 
+                data-target="#FIFO" aria-expanded="false"
+                ng-click="trocarAlgoritmoExercicios('FIFO')">FIFO <i class="fa fa-caret-down"></i></a>
+                <div class="collapse" id="FIFO" style="margin-left:10px;">
+                    <i>First-In First-Out</i>
+                </div>
+                <a href="" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" 
+                data-target="#SJF" aria-expanded="false"
+                ng-click="trocarAlgoritmoExercicios('SJF')">SJF <i class="fa fa-caret-down"></i></a>
+                <div class="collapse" id="SJF" style="margin-left:10px;">
+                    <i>Shortest Job First</i>
+                </div>
+                <a href="" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" 
+                data-target="#Prioridade" aria-expanded="false"
+                ng-click="trocarAlgoritmoExercicios('Prioridade')">Prioridade <i class="fa fa-caret-down"></i></a>
+                <div class="collapse" id="Prioridade" style="margin-left:10px;">
+                        <i>Prioridade</i>
+                </div>
+                <a href="" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" 
+                data-target="#RoundRobin" aria-expanded="false"
+                ng-click="trocarAlgoritmoExercicios('Round-Robin')">RoundRobin <i class="fa fa-caret-down"></i></a>
+                <div class="collapse" id="RoundRobin" style="margin-left:10px;">
+                        <i>Round Robin</i>
+                </div>                 
+            </div>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div class="form-group">
+            <h1 style="font-weight: bold; text-align: center;">Exercícios Cadastrados</h1>
+            <hr>
+            <h1 style="text-align: center;">{{algoritmoAtual.descricao}}</h1>
+            <p ng-show="algoritmoAtual.nome == 'Round-Robin'">
+                Valor de Quantum: <input type="number" class="form-control" min="2" max="10" value="5" 
+                style="width: auto;" ng-model="quantumView" onkeyup="somenteNumeros(this);">
+            </p>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">Exercício</th>
+                        <th style="text-align: center;">Quantidade de Processos</th>
+                        <th style="text-align: center;">Opções</th>
+                    </tr>
+                </thead>
+                <tbody dir-paginate="indice in HashExercicios | itemsPerPage:10">
+                    <tr>
+                        <td style="text-align: center;">{{indice.exercicio}}</td>
+                        <td style="text-align: center;"><span class="badge">{{indice.quantidadeProcessosLista}}</span></td>
+                        <td style="text-align: center;">
+                            <button type="button" class="btn btn-primary" style="width: auto; text-align: center;"
+                            data-toggle="modal" data-target="#myModal" ng-click="visualizarAtividade(indice)">
+                            <i class="glyphicon glyphicon-eye-open"></i> Visualizar</button>
+                            <a href="#/analise-exercicios" class="btn btn-success" role="button" style="width: auto; text-align: center;" ng-click="responderExercicio(indice)">
+                                <i class="glyphicon glyphicon-edit"></i> Responder
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table><dir-pagination-controls style="margin-left:20px;" max-size="2" boundary-links="true"></dir-pagination-controls>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 700px;">
+            <div class="modal-header modal-header-info">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" style="text-align: center;" id="myModalLabel">{{exercicioAtual}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                        <table class="table table-bordered" style="width: 600px; margin-left:20px;">
+                            <thead>
+                                <tr>
+                                    <th style="text-align: center;">Processo</th>
+                                    <th style="text-align: center;">Próximo Ciclo</th>
+                                    <th style="text-align: center;">Momento de Transição</th>
+                                    <th style="text-align: center;" ng-show="algoritmoAtual.nome == 'Prioridade'">Prioridade</th>
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="fila in ExercicioSistema">
+                                <tr>
+                                    <td style="text-align: center;">{{fila.processoSistema}}</td>
+                                    <td style="text-align: center;">{{fila.proximoCicloSistema}}</td>
+                                    <td style="text-align: center;">{{fila.momentoTransicaoSistema}}</td>
+                                    <td style="text-align: center;" ng-show="algoritmoAtual.nome == 'Prioridade'" 
+                                        style="text-align: center;">{{fila.prioridadeSistema}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="responderView" style="width: 150px;" class="btn btn-success" 
+                ng-click="responderNaVisualizacaoModal()" data-dismiss="modal">Responder</button>
+                <button type="button" style="width: 150px;" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><br>
+<div class="row">
+<div ng-include="'templates/footer.html'"></div>
+</div>
+<script>
+    function somenteNumeros(num) {
+        var er = /[^0-9.]/;
+        er.lastIndex = 0;
+        var campo = num;
+        if (er.test(campo.value)) {
+          campo.value = "";
+        }
+    }
+    $(function() {
+        $('#responderView').on('click', function() {
+            $('.modal').modal('hide');
+            setTimeout(function() {
+                window.location.href = "#/analise-exercicios";
+            }, 180); // 3000 = 3 segundos        
+        });
+        });
+
+</script>

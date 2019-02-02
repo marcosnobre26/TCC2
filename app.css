@@ -1,0 +1,200 @@
+.menor {
+    color: white;
+    display:block;
+    background-color: red;
+}
+.maior {
+    color: white;
+    display:block;
+    background-color: blue;
+}
+#mostrar{
+    display: none;
+  }
+#criar_exercicios{
+    background-color: #FFFBFB;
+}
+
+
+/* criar_exercícios */
+.list-group.panel > .list-group-item {
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    background: #7386D5;
+    color: white;
+  }  
+
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
+    content: '\e259';
+    display: block;
+    position: absolute;
+    right: 20px;
+    font-family: 'Glyphicons Halflings';
+    font-size: 0.6em;
+}
+a[aria-expanded="true"]::before {
+    content: '\e260';
+}
+
+/* muda a cor quando passa na linha da tabela*/
+table {
+    overflow: hidden;
+    border-collapse: collapse;
+    border: 1px solid black;
+  }
+td, th {
+    padding: 10px;
+    position: relative;
+    outline: 0;
+    border: 1px solid black;
+  }
+  
+  body:not(.nohover) tbody tr:hover {
+    background-color: #ffa;
+  }
+  
+  td:hover::after,
+  thead th:not(:empty):hover::after,
+  td:focus::after,
+  thead th:not(:empty):focus::after { 
+    content: '';  
+    height: 10000px;
+    left: 0;
+    position: absolute;  
+    top: -5000px;
+    width: 100%;
+    z-index: -1;
+  }
+  
+  td:hover::after,
+  th:hover::after {
+    background-color: #ffa;
+  }
+  
+  td:focus::after,
+  th:focus::after {
+    background-color: lightblue;
+  }
+  
+  /* Focus stuff for mobile */
+  td:focus::before,
+  tbody th:focus::before {
+    background-color: lightblue;
+    content: '';  
+    height: 100%;
+    top: 0;
+    left: -5000px;
+    position: absolute;  
+    width: 10000px;
+    z-index: -1;
+  }
+
+  /* aparecer uma caixa de texto na tabela*/
+  .CellWithComment{
+    position:relative;
+    border-bottom: 1px dotted black;
+  }  
+  .CellComment{
+    visibility: hidden;    
+    width: 140px;
+    text-align: center;
+    background-color: #555;
+    color: #fff;
+    text-align: auto;
+    border-radius: 6px;
+    padding: 5px 0;
+    z-index: 1;
+    display:none;
+    position:absolute; 
+    z-index:100;
+    left: 50%;
+    opacity: 0;
+    top:35px; 
+    left:20px;
+  }
+  .CellWithComment .CellComment::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 4px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }  
+  .CellWithComment:hover span.CellComment{
+    visibility: visible;
+    display:block;
+    opacity: 1;
+  }
+
+  /*mudar as cores do title modal*/
+  .modal-header-success {
+    color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #5cb85c;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+.modal-header-warning {
+	color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #f0ad4e;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+.modal-header-danger {
+	color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #d9534f;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+.modal-header-info {
+    color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #5bc0de;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+.modal-header-primary {
+	color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #428bca;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+/*fim mudar as cores do title modal*/

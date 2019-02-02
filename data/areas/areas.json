@@ -1,0 +1,27 @@
+[
+  {
+    "id": "sustentabilidade",
+    "name": "Ciências da Natureza",
+    "imageUrl":"img/areas/natureza.jpg"
+  },
+  {
+    "id":"engenharia",
+    "name":"Engenharia",
+    "imageUrl": "img/areas/engenharia.png"
+  },
+  {
+    "id":"sociedade",
+    "name":"Sociedade",
+    "imageUrl": "img/areas/sociedade.jpg"
+  },
+  {
+    "id":"tecnologia",
+    "name":"Tecnologia",
+    "imageUrl": "img/areas/tecnologia.jpg"
+  },
+  {
+    "id":"saude",
+    "name":"Saúde",
+    "imageUrl": "img/areas/saude.jpg"
+  }
+]

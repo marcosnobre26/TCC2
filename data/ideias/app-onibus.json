@@ -1,0 +1,21 @@
+{
+    "id": "app-onibus",
+    "name": "Aplicativo para as rotas dos Ônibus",
+    "description": "O enfoque da ideia é desenvolver um aplicaticação móvel que auxiliam as pessoas a descobrirem os horários e rotas dos ônibus em Palmas, por 24 horas. Facilitando a vida das pessoas que dependem muito do transporte coletivo.",
+    "area": "Tecnologia/Sociedade",
+    "image": "img/ideias/app-onibus.png",
+    "skills": [
+      "Programar",
+      "Gestão",
+      "Comunicação"
+    ],
+    "vote": 19,
+    "participants":[
+      "Fernando Silva Noleto",
+      "Rogerio Silva Leite",
+      "Leide Pereira Silva",
+      "Samuel Carlos",
+      "Alan Fabio de Melo",
+      "Taynara Rodrigues de Souza"
+    ]
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "id":"sustentabilidade",
+    "imageUrl": "img/ideias/sustentabilidade-imagem.jpg",
+    "name": "Sustentabilidade Ambiental"
+  },
+  {
+    "id":"engenharia",
+    "imageUrl": "img/ideias/hidricos.jpg",
+    "name": "Uso dos Recursos Hídricos"
+  },
+  {
+    "id":"engenharia-civil",
+    "imageUrl": "img/ideias/engenharia.jpg",
+    "name": "Cidade Futurista"
+  },
+  {
+    "id":"sociedade-tecnologia",
+    "imageUrl":"img/ideias/sociedade-tecnologia.jpg",
+    "name":"Inclusão Digital"
+  },
+  {
+    "id":"app-onibus",
+    "imageUrl":"img/ideias/app-onibus.png",
+    "name":"Aplicativo para rotas de Ônibus"
+  },
+  {
+    "id":"plataforma-web",
+    "imageUrl":"img/ideias/plataforma-web.jpg",
+    "name":"Ambientes virtuais para pessoas especiais"
+  },
+  {
+    "id":"curso-especializacao",
+    "imageUrl":"img/ideias/curso-especializacao.jpg",
+    "name":"Cursos de Especialização na Web"
+  },
+  {
+    "id":"impressora-sustentavel",
+    "imageUrl":"img/ideias/impressora-sustentavel.jpg",
+    "name":"Impressora que não utiliza tinta nem papel"
+  },
+  {
+    "id":"saude-corpo",
+    "imageUrl":"img/ideias/saude.png",
+    "name":"Prevenção de doenças - Boas Práticas"
+  }
+]

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login V5</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-signin-client_id" content="576572641462-baicoff26hre7d8a4u9g7b178jrsubu6.apps.googleusercontent.com">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+
+
+	<script type="text/javascript" src="vendor/jquery/jquery-3.2.1.min.js"></script>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>   
+<!--===============================================================================================-->
+</head>
+<body>
+
+	<!---FACEBOOK-->
+
+<script>
+		window.fbAsyncInit = function() {
+		  FB.init({
+			appId      : '2112994455413586',
+			cookie     : true,
+			xfbml      : true,
+			version    : 'v3.2'
+		  });
+			
+		  FB.AppEvents.logPageView();   
+			
+		};
+	  
+		(function(d, s, id){
+		   var js, fjs = d.getElementsByTagName(s)[0];
+		   if (d.getElementById(id)) {return;}
+		   js = d.createElement(s); js.id = id;
+		   js.src = "https://connect.facebook.net/en_US/sdk.js";
+		   fjs.parentNode.insertBefore(js, fjs);
+		 }(document, 'script', 'facebook-jssdk'));
+	
+	
+	
+		 function checkLoginState() {
+			FB.getLoginStatus(function(response) {
+				statusChangeCallback(response);
+			});
+		}
+	
+	
+		function checkLogin() {
+			FB.getLoginStatus(function(response) {
+				statusChangeCallback(response);
+				checkLoginState();
+			});
+		}
+	
+		function checkLoginState() {
+			FB.getLoginStatus(function (response) {
+				statusChangeCallback(response);
+			});
+		}
+	
+		function statusChangeCallback(response) {
+			//console.log('statusChangeCallback');
+			console.log(response);
+			// The response object is returned with a status field that lets the
+			// app know the current login status of the person.
+			// Full docs on the response object can be found in the documentation
+			// for FB.getLoginStatus().
+			if (response.status === 'connected') {
+				// Logged into your app and Facebook.
+				console.log('Welcome!  Fetching your information.... ');
+				FB.api('/me', function (response) {
+					console.log('Successful login for: ' + response.name);
+					document.getElementById('status').innerHTML =
+						'Thanks for logging in, ' + response.name + '!';
+
+
+						var nome;//=nome();
+						var id;//=id();
+						var foto;
+						nome=response.name;	
+						//nome="nome";	
+						id=response.id;	
+						//id="id";	
+						//foto=response.picture;		
+						foto='https://graph.facebook.com/' + response.id + '/picture?type=large';;		
+						//console.log("nome: "+nome+" - id: "+id+" - foto: "+foto);	
+						//console.log(foto);	
+						
+						$.ajax({
+							type: "POST",
+							url: "perfil.php",
+							data: {nome, id, foto,},
+							//data: "campo1=dado1&campo2=dado2&campo3=dado3",
+							//data: dataString,
+							dataType: "html",
+							success: function( data )
+							{
+								//alert( data );
+							}
+						});
+				});
+			} else {
+				// The person is not logged into your app or we are unable to tell.
+				document.getElementById('status').innerHTML = 'Please log ' +
+					'into this app.';
+			}
+		}
+	
+		
+	
+		function checkLoginState() {// esta função serve para pegar a foto de perfil do 
+			FB.getLoginStatus(function(response) {
+				statusChangeCallback(response);
+				//console.log("email: "+response.email);
+				console.log('Welcome!  Fetching your information.... ');
+				var url = '/me?fields=id,name';
+				FB.api(url, function(response) {
+					var linkpp = 'https://graph.facebook.com/' + response.id + '/picture?type=large'; //este é o link da foto para aparecer no login
+
+					return linkpp;
+				});
+			});
+		}
+
+		function foto(){
+			var url = '/me?fields=id,name';
+			FB.api(url, function(response) {
+				var linkpp = 'https://graph.facebook.com/' + response.id + '/picture?type=large'; //este é o link da foto para aparecer no login
+
+				return ""+linkpp;
+			});
+		}
+
+		function nome(){
+			FB.api('/me', function (response) {
+				return ""+response.name;					
+			});
+		}
+
+		function id(){
+			FB.api('/me', function (response) {
+				return ""+response.id;					
+			});
+		}
+	  </script>
+	
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+				<form class="login100-form validate-form flex-sb flex-w">
+					<span class="login100-form-title p-b-53">
+						Sign In With
+					</span>
+
+					
+					<div class="fb-login-button" data-size="large" data-button-type="login_with" data-auto-logout-link="false" data-use-continue-as="false" onlogin="checkLoginState();"></div>
+
+					<!--<fb:login-button id="click" onlogin="checkLoginState();"></fb:login-button>
+						<a id="facebook" href="#" class="btn-face m-b-20">
+							
+							
+									<i class="fa fa-facebook-official"></i>Facebook
+							
+							
+						</a>
+					</fb:login-button>-->
+
+
+					<div class="g-signin2" data-onsuccess="onSignIn"></div>
+					<!--<a href="#" class="btn-google m-b-20">
+						<img src="images/icons/icon-google.png" alt="GOOGLE">
+						Google
+					</a>-->
+					
+					<div class="p-t-31 p-b-9">
+						<span class="txt1">
+							Username
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Username is required">
+						<input class="input100" type="text" name="username" >
+						<span class="focus-input100"></span>
+					</div>
+					
+					<div class="p-t-13 p-b-9">
+						<span class="txt1">
+							Password
+						</span>
+
+						<a href="#" class="txt2 bo1 m-l-5">
+							Forgot?
+						</a>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" name="pass" >
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="container-login100-form-btn m-t-17">
+						<button class="login100-form-btn">
+							Sign In
+						</button>
+					</div>
+
+					<div class="w-full text-center p-t-55">
+						<span class="txt2">
+							Not a member?
+						</span>
+
+						<a href="#" class="txt2 bo1">
+							Sign up now
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+    <fb:login-button 
+        scope="public_profile,email"
+        onlogin="checkLoginState();">
+    </fb:login-button>
+    <div id="dropDownSelect1"></div>
+    
+	<a href="#" onclick="signOut();">Sign out</a>
+	
+
+
+
+<p>abaixo</p>
+
+	<fb:login-button id="click" scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
+
+<div id="status">
+</div>
+
+<img src="https://graph.facebook.com/111325383303445/picture?type=large" alt="Smiley face" height="42" width="42">
+
+
+<script>
+	$('#face').click(function(event){
+
+		//$('#click').click();
+
+		var nome;//=nome();
+		var id;//=id();
+		var foto;
+
+		FB.api('/me', function (response)
+		{
+			//nome=response.name;	
+			nome="nome";	
+			//id=response.id;	
+			id="id";	
+			//foto=response.foto;		
+			foto="foto";		
+			//console.log("nnome: "+nome+" - id: "+id+" - foto: "+foto);	
+			//var dataString = 'nome='+name+'&id='+id+'&foto='+foto;
+			
+			
+			$.ajax({
+				type: "POST",
+				url: "perfil.php",
+				//data: {nome: nome, id: id, foto: foto},
+				//data: {nome, id, foto},
+				//data: {name:"asd"},
+				data: "campo1=dado1&campo2=dado2&campo3=dado3",
+				//data: dataString,
+				dataType: "html",
+				success: function( resposta )
+				{
+					console.log(resposta);
+				}
+			});
+		});
+	});
+
+	$('#facebook').click(function(event){
+      console.log("teste");
+    });
+</script>
+
+	
+    
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+    <script src="js/main.js"></script>
+    
+    <script>
+    
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+        }
+	</script>
+	
+
+<script>
+    function signOut() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+        console.log('User signed out.');
+      });
+    }
+
+    //https://developers.google.com/identity/sign-in/web/sign-in
+  </script>
+
+
+
+
+
+</body>
+</html>

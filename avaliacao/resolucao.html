@@ -1,0 +1,112 @@
+<div class = "page-header" style="height: 20px;">
+<nav class="navbar navbar-default navbar-fixed-top" style="background-color:#7386D5; color: white;">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" style="color: white; font-weight: bold;" href="#/dashboard">Início</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">      
+      <ul class="nav navbar-nav navbar-right">
+        <li><a style="color: white;" href="#/analise-exercicios">Responder Novamente</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="table-responsive">
+            <div class="col-md-4" style="border-right: 1px solid;">
+                <h1 style="font-weight: bold; text-align: center;">Tabela Inicial</h1><hr/>
+                    <table style="width: auto; margin: auto;" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center;">Processo</th>
+                                <th style="text-align: center;">Próximo Ciclo</th>
+                                <th style="text-align: center;">Momento de Transição</th>
+                                <th ng-show="algoritmoSelecionado.nome == 'Prioridade'">Prioridade</th>
+                        </thead>
+                        <tbody ng-repeat="processo in processosSistema">
+                            <tr>
+                                <td style="text-align: center;">{{processo.processoSistema}}</td>
+                                <td style="text-align: center;">{{processo.proximoCicloSistema}}</td>
+                                <td style="text-align: center;">{{processo.momentoTransicaoSistema}}</td>
+                                <td ng-show="algoritmoSelecionado.nome == 'Prioridade'" 
+                                style="text-align: center;">{{processo.prioridadeSistema}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+            <div class="col-md-4" style="border-right: 1px solid;">
+            <h1 style="font-weight: bold; text-align: center;">Resposta Correta</h1><hr/>
+            <table style="width: auto; margin: auto;" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">Processo</th>
+                        <th style="text-align: center;">Tempo Total (TT)</th>
+                        <th style="text-align: center;">Tempo de Espera (TE)</th>
+                </thead>
+                <tbody ng-repeat="fila in respostaSistemaFinal">
+                    <tr>
+                        <td style="width: auto; text-align: center;">{{fila.Processo}}</td>
+                        <td style="width: auto; text-align: center;">{{fila.TempoTotal}}</td>
+                        <td style="width: auto; text-align: center;">{{fila.TempoEspera}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <div class="col-md-4">
+            <h1 style="font-weight: bold; text-align: center;">Sua Resposta</h1><hr/>
+            <table style="width: auto; margin: auto;" class="table table-bordered">
+                    <thead>
+                        <th style="text-align: center;">Processo</th>
+                        <th style="text-align: center;">Tempo Total (TT)</th>
+                        <th style="text-align: center;">Tempo de Espera (TE)</th>
+                    </thead>
+                    <tbody ng-repeat="usuario in respostasUsuarioFinal">
+                        <tr ng-repeat="respSis in respostaSistemaFinal" ng-show="respSis.Processo == usuario.ProcessoResposta">
+                            <td style="width: auto; text-align: center;">                            
+                                {{usuario.ProcessoResposta}}
+                            </td>
+                            <td style="width: auto; text-align: center;">
+                                    <strong class="menor" ng-show="usuario.tempoTotalResposta != respSis.TempoTotal">{{usuario.tempoTotalResposta}}</strong>
+                                    <strong class="maior" ng-show="usuario.tempoTotalResposta == respSis.TempoTotal">{{usuario.tempoTotalResposta}}</strong>
+                            </td>
+                            <td style="width: auto; text-align: center;">
+                                    <strong class="menor" ng-show="usuario.TempoEsperaResposta != respSis.TempoEspera">{{usuario.TempoEsperaResposta}}</strong>
+                                    <strong class="maior" ng-show="usuario.TempoEsperaResposta == respSis.TempoEspera">{{usuario.TempoEsperaResposta}}</strong>
+                            </td>
+                        </tr>
+                    </tbody>
+            </table>
+            <hr/>
+            <h6 style="font-weight: bold; text-align: center;">Informações das Respostas</h6>
+            <hr/>
+            <table style="width: auto; margin: auto;" class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th style="text-align: center;">Colunas</th>
+                        <th style="text-align: center;">Resultado</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align: center; background-color: blue;"></td>
+                            <td style="text-align: center;">Você acertou!</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; background-color: red;"></td>
+                            <td style="text-align: center;">Você errou!</td>
+                        </tr>
+                    </tbody>                    
+            </table> 
+            </div>
+        </div>
+    </div>
+</div>

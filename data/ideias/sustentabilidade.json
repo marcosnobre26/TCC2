@@ -1,0 +1,20 @@
+{
+    "id": "sustentabilidade",
+    "name": "Sustentabilidade Ambiental - Recursos Hídricos",
+    "description": "Esta ideia busca contribuir com o campo da educação ambiental, reconhecendo o papel dos meios de comunicação para a consciência ambiental através de conjunto de ações e pesquisas.",
+    "area": "Ciências da Natureza",
+    "image": "img/ideias/sustentabilidade-imagem.jpg",
+    "skills": [
+      "Comunicação",
+      "Visão Sustentável",
+      "Criatividade"
+    ],
+    "vote": 5,
+    "participants":[
+      "Paulo Andre Ciclano",
+      "Junior Alves Fulano",
+      "Carlos Mendes Conceição",
+      "Henrique Augusto Meire",
+      "Viscote Damaceno Junior"
+    ]
+  }

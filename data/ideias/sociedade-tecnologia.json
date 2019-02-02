@@ -1,0 +1,22 @@
+{
+    "id": "sociedade-tecnologia",
+    "name": "Inclusão Digital",
+    "description": "Em visto dos esforço para ensina tecnológia para população mais carente. Vemos como grande potencial, o crescimento dentro da Informática no campo do CEUL/ULBRA para esse público específico.",
+    "area": "Sociedade",
+    "image": "img/ideias/sociedade-tecnologia.jpg",
+    "skills": [
+      "Programar",
+      "Resolver problemas",
+      "Trabalho em equipe"
+    ],
+    "vote": 9,
+    "participants":[
+      "Lucas Fereira Santos",
+      "Jonas Augusto Rio",
+      "Mercedes Boigr",
+      "Jurgen Klopp Sousa",
+      "Augusto Henrique Silva",
+      "Leo Pereira Dantas",
+      "Gabriel Ribeiro da Costa"
+    ]
+}

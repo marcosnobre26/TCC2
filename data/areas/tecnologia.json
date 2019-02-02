@@ -1,0 +1,11 @@
+{
+  "id": "tecnologia",
+  "nome": "Tecnologia",
+  "descricao": "Ramo da ciência da exata que trabalha com novos modelos e ferramentas tecnológicos que ajudam as pessoas.",
+  "image":"img/areas/tecnologia.jpg",
+  "ideiasL": [
+      "Cursos de Especialização na Web",
+      "Ambientes virtuais para pessoas especiais",
+      "Aplicativo para as rotas dos Ônibus"
+  ]
+}

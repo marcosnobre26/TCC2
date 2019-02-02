@@ -1,0 +1,9 @@
+{
+  "id": "saude",
+  "nome": "Saúde",
+  "descricao": "Orientar boas práticas de prevenção para a comunidade de Palmas, do Tocantins.",
+  "image":"img/areas/saude.jpg",
+  "ideiasL": [
+      "Prevenção de doenças - Boas Práticas"
+  ]
+}

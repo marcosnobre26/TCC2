@@ -1,0 +1,23 @@
+{
+    "id": "curso-especializacao",
+    "name": "Cursos de Especialização na Web",
+    "description": "Uma plataforma Web que contenha diversos cursos de especialização em diversas áreas, com carga horária pequena e de forma gratuita. Um forma dos profissionais estarem atualizados nas tecnologias em sua respectivas áreas e incentivo de cada vez mais, o profissional se interessa em cursar mestrados, doutorados. O objetivo da ideia é incentivar todos os profissionais Palmenses a se renovarem.",
+    "area": "Tecnologia",
+    "image": "img/ideias/curso-especializacao.jpg",
+    "skills": [
+        "Programar",
+        "Gestão",
+        "Resolver Problemas"
+    ],
+    "vote": 12,
+    "participants":[
+      "Jane Augusto",
+      "David Henq",
+      "Marcela Mattos",
+      "Junior Frank",
+      "Reus Gotze",
+      "Edivaldo Bruno Oliveira",
+      "Kestone Nunes Mello",
+      "Lucas Moura"
+    ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "tcc",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "clear": "rmdir /S /Q node_modules",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.7.6",
+    "angular-resource": "^1.7.6",
+    "angular-route": "^1.7.6",
+    "bootstrap": "^3.4.0",
+    "jquery": "^2.2.4"
+  },
+  "devDependencies": {
+    "http-server": "^0.9.0"
+  },
+  "description": ""
+}

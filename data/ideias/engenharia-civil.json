@@ -1,0 +1,18 @@
+{
+    "id": "engenharia-civil",
+    "name": "Cidade Futurista",
+    "description": "A ideia central do projeto é desenvolver um protótipo de uma cidade autosustentável e tecnológica. Tendo o foco na cidade criativa e limpa, que faz uso da tecnologia em seu processo de planejamento com a participação dos cidadãos. Queremos ter como resultado da cidade de Palmas, pioneira de cidade totalmente tecnólogica.",
+    "area": "Engenharia",
+    "image": "img/ideias/engenharia.jpg",
+    "skills": [
+      "Matemática",
+      "Programar",
+      "Construção"
+    ],
+    "vote": 9,
+    "participants":[
+      "Lucas Fereira Santos",
+      "Jonas Augusto Rio",
+      "Mercedes Boigr"
+    ]
+}

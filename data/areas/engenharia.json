@@ -1,0 +1,10 @@
+{
+  "id": "tecnologia",
+  "nome": "Tecnologia",
+  "descricao": "Engenharia é aplicação do conhecimento científico, econômico, social e prático, com o intuito de inventar, desenhar, construir, manter e melhorar estruturas.",
+  "image":"img/areas/engenharia.png",
+  "ideiasL": [
+      "Cidade Futurista",
+      "Uso dos Recursos Hídricos"
+  ]
+}

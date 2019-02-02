@@ -1,0 +1,73 @@
+<div ng-include="'templates/nav_bar.html'"></div>
+<div class="container">
+    <div class="row">
+        <h1 style="text-align: center;">Algoritmo de Escalonamento: {{algoritmoSelecionado.nome}}</h1>
+        <hr/>
+        <div class="table-responsive">
+            <div class="col-md-6" style="border-right: 1px solid;">
+                <h2 style="text-align: center;">Tabela Inicial dos Processos</h2>          
+                <center><h1><i class="glyphicon glyphicon-menu-hamburger"></i></center></h1></center>
+                <table style="width: auto; margin: auto;" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">Processo</th>
+                            <th style="text-align: center;">Próximo Ciclo</th>
+                            <th style="text-align: center;">Momento de Transição</th>
+                            <th ng-show="algoritmoSelecionado.nome == 'Prioridade'">Prioridade</th>
+                    </thead>
+                    <tbody ng-repeat="processo in processosSistema">
+                        <tr>
+                            <td><center>{{processo.processoSistema}}</center></td>
+                            <td><center>{{processo.proximoCicloSistema}}</center></td>
+                            <td><center>{{processo.momentoTransicaoSistema}}</center></td>
+                            <td ng-show="algoritmoSelecionado.nome == 'Prioridade'" 
+                            style="text-align: center;"><center>{{processo.prioridadeSistema}}</center></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                    <h2 style="text-align: center;">Digite sua resposta aqui</h2> 
+                    <center><h1><i class="glyphicon glyphicon-hand-down"></i></center></h1></center>
+                    <table style="width: auto; margin: auto;" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center;">Processo</th>
+                                <th style="text-align: center;">Tempo Total</th>
+                                <th style="text-align: center;">Tempo de Espera</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <tr ng-repeat="dados in dadosUsuarios">
+                                    <td style="text-align: center;">{{dados.nomeProcesso}}</td>
+                                    <td class="CellWithComment" >
+                                        <input name="tempoTotal{{$index}}" style="Border:0; text-align: center; background-color: white;"
+                                        ng-model="dados.tempoTotal"  ng-disabled="enabledEdit[{{$index}}]" />
+                                        <span class="CellComment">Campo Editável!</span>
+                                    </td>
+                                    <td class="CellWithComment" >
+                                        <input name="tempoEspera{{$index}}" style="Border:0; text-align: center; background-color: white;"
+                                        ng-model="dados.tempoEspera"  ng-disabled="enabledEdit[{{$index}}]" />
+                                        <span class="CellComment">Campo Editável!</span>
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+        <p>
+            <h4  ng-show="algoritmoSelecionado.nome == 'Round-Robin'">
+            Valor do Quantum: {{algoritmoSelecionado.quantum}}</h4>
+        </p>  
+    </div>
+</div>
+<br>
+<hr/>
+<center>
+    <a href="#/resolucao" class="btn btn-success" role="button" style="width: 200px;" ng-click="finalizarAnalise()">
+        <i class="glyphicon glyphicon-ok-circle"></i> Avaliar
+    </a>
+    <a href="#/dashboard" class="btn btn-danger" role="button" style="width: 200px;">
+        <i class="glyphicon glyphicon-remove"></i> Cancelar
+    </a>                  
+</center>

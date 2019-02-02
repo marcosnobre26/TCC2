@@ -1,0 +1,10 @@
+{
+  "id": "sociedade",
+  "nome": "Sociedade",
+  "descricao": "Sociedade é um sistema de símbolos, valores e normas, como também é um sistema de posições e papéis.",
+  "image":"img/areas/sociedade.jpg",
+  "ideiasL": [
+    "Aplicativo para as rotas dos Ônibus",
+    "Inclusão Digital"
+  ]
+}

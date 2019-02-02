@@ -1,0 +1,210 @@
+<div class = "page-header" style="height: 20px;">
+    <nav class="navbar navbar-default navbar-fixed-top" style="background-color:#7386D5; color: white;">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" style="color: white; font-weight: bold;" href="#/dashboard">Início</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">      
+          <ul class="nav navbar-nav navbar-right">
+            <li><a style="color: white;" href="#/exercicios-cadastrados">Exercícios Cadastrados</a></li>       
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+</div>
+<div class="container">
+    <div id="criar_exercicios">
+    <div class="row">
+        <div class="col-md-3" style="border-right: 1px solid;">
+        <div class="alert alert-danger" ng-show="MSGErroShow == true">
+            <button class="close" type="button" data-dismiss="alert">x</button>
+            <h4>{{logsErrosView.nomeErro}}</h4>
+            {{logsErrosView.erroMomentoTransicao}}<br>
+            {{logsErrosView.erroProximoCiclo}}<br>
+            {{logsErrosView.Verificar}}
+        </div>
+                    <div class="form-group">        
+                        <h2><label for="usuario">Algoritmo:</label></h2>
+                        <select form="form-control" class="form-control" ng-change="trocarAlgoritmo()" ng-model="nomeAlgoritmoView" 
+                        ng-options="algoritmo.nome for algoritmo in algoritmosEscalonamento">
+                        <option value="">Selecione...</option>        
+                        </select>           
+                    </div>                    
+                   <h4 style="text-align: center;">{{nomeAlgoritmoView.nome}}</h4>
+                    <hr/>
+                    <p ng-show="nomeAlgoritmoView.nome == 'Round-Robin'">
+                        Quantum: <input type="number" class="form-control" min="2" max="10" value="5" 
+                        style="Border:1; text-align: center;" ng-model="quantumView">
+                    </p>
+                    <hr/>
+                    <form>                    
+                        <div class="form-group">
+                            <input type="text" class="form-control" style="Border:1; text-align: center;" ng-model="processo.processoSistema" 
+                        placeholder="Nome do Processo"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" onkeyup="somenteNumeros(this);" placeholder="Próximo Ciclo (PC)"
+                        style="Border:1; text-align: center;" ng-model="processo.proximoCicloSistema"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" onkeyup="somenteNumeros(this);" placeholder="Momento de Transição (MT)"
+                        style="Border:1; text-align: center;" ng-model="processo.momentoTransicaoSistema"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" style="Border:1; text-align: center;"
+                        placeholder="Prioridade" ng-show="nomeAlgoritmoView.nome == 'Prioridade'" ng-model="processo.prioridadeSistema"/>
+                        </div>
+                        <hr/>
+                        <div class="form-group">
+                        <center>                 
+                        <button type="submit" class="success btn btn-primary" id="adicionandoProcesso"  style="width: 160px; text-align: center;"
+                        ng-click="adicionarProcessos(processo)" ng-disabled="!processo.processoSistema || !processo.proximoCicloSistema || !processo.momentoTransicaoSistema || !nomeAlgoritmoView.nome">
+                        Adicionar Processo
+                        <span class="CellComment">Preencher!</span></button>             
+                        <br><br>
+                        <button class="btn btn-danger" type="reset" style="width: 160px; text-align: center;" data-toggle="modal" data-target="#myCancelacao">
+                        Limpar</button>
+                        </center>
+                        </div>
+                    </form>
+            <hr/>
+        </div>
+        <div class="col-md-8">
+            <div class="alert alert-danger" ng-show="invalidaOperacaoCriarExercicio == true">
+                <button class="close" type="button" data-dismiss="alert">x</button>
+                <h4>Atenção</h4>
+                Olá, insere pelo menos um processo na Tabela Inicial para prosseguir com a operação.
+            </div>
+            <h1 style="font-weight: bold;"><center>Vamos criar um exercício</center></h1>
+            <hr/>
+            <h2 style="text-align: center;">Tabela Inicial</h2>
+            <hr/>
+            <button type="button" class="btn btn-success" style="width: auto; text-align: center; float: right;" ng-click="inserirExercicio()"
+            data-toggle="modal" data-target="#myModal">
+                <i class="glyphicon glyphicon-floppy-save"></i> Salvar Exercício
+            </button>
+            <br><br>
+            <div class="table-responsive">
+                <table class="table table-bordered table-inverse" style="width: auto; margin: auto;">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">Nome do Processo</th>
+                            <th style="text-align: center;">Próximo Ciclo (PC)</th>
+                            <th style="text-align: center;">Momento de Transição (MT)</th>
+                            <th style="text-align: center;" ng-show="nomeAlgoritmoView.nome == 'Prioridade'">Prioridade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="processo in processosApresentacao">
+                            <td style="text-align: center;">{{processo.processoSistema}}</td>
+                            <td style="text-align: center;">{{processo.proximoCicloSistema}}</td>
+                            <td style="text-align: center;">{{processo.momentoTransicaoSistema}}</td>
+                            <td ng-show="nomeAlgoritmoView.nome == 'Prioridade'" 
+                                style="text-align: center;">{{processo.prioridadeSistema}}</td>
+                        </tr>
+                    </tbody>    
+                </table>
+            </div>        
+        </div>
+        <!--<div class="col-md-2">
+            <center><h1 style="font-weight: bold;">Dados</h1></center>
+            <hr/>
+            <div id="divCriar" border="1" style="border: 1px solid;">
+                Uso Total da CPU: {{contCPU}} <br>
+                Processos criados: {{contProcessos}} <br>
+                Algoritmo: {{algoritmoEscolhido.nome}}
+            </div>
+            <div class="span4 pull-right">
+                <div class="alert alert-success fade">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>Novo Processo</strong> criado...
+                </div>
+            </div>
+        </div>-->
+    </div>
+    </div>
+</div>
+<hr/>
+<div class="form-group">  
+    <center>
+        <a href="#/analise-exercicios" class="btn btn-success" style="width: 200px;" 
+        ng-click="finalizarInsercao()">
+            <i class="glyphicon glyphicon-edit"></i> Responder
+        </a>
+        <button type="button" class="btn btn-danger" style="width: 200px; text-align: center;"
+        data-toggle="modal" data-target="#myCancelacao">
+            <i class="glyphicon glyphicon-floppy-save"></i> Cancelar
+        </button>              
+    </center>
+</div>
+<div class="modal fade" id="myCancelacao" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 700px;">
+        <div class="modal-header modal-header-danger">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" style="text-align: center;" id="myModalLabel">Desejar cancelar ação?</h4>
+        </div>
+        <div class="modal-footer">
+            <button type="button" id="cancelandoOperacao" style="width: 150px;" class="btn btn-danger">Sim</button>
+            <button type="button" style="width: 150px;" class="btn btn-success" data-dismiss="modal">Não</button>
+        </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal" ng-show="guardado == true" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 700px;">
+        <div class="modal-header modal-header-info">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" style="text-align: center;" id="myModalLabel">Atenção!</h4>
+        </div>
+        <div class="modal-body">
+            {{msg}}
+        </div>
+        <div class="modal-footer">
+            <button type="button" style="width: 150px;" class="btn btn-success" data-dismiss="modal">Ok</button>
+        </div>
+        </div>
+    </div>
+</div>
+<div ng-include="'templates/footer.html'"></div>
+<script>
+    /*$('button').on('click', function () {
+        $(".alert").removeClass("in").show();
+        $(".alert").delay(400).addClass("in").fadeOut(2000);
+    });*/
+    function somenteNumeros(num) {
+        var er = /[^0-9.]/;
+        er.lastIndex = 0;
+        var campo = num;
+        if (er.test(campo.value)) {
+          campo.value = "";
+        }
+    }
+    $(".success").click(function(){
+        $.bootstrapGrowl('Criado novo processo!',{
+            type: 'success',
+            delay: 2000,
+        });
+    });
+    $(function() {
+    $('#adicionandoProcesso').on('click', function() {
+        $(".span4").removeClass("in").show();
+	    $(".span4").delay(200).addClass("in").fadeOut(2000);
+    });
+    $('#cancelandoOperacao').on('click', function() {
+        $('.modal').modal('hide');
+        setTimeout(function() {
+            window.location.href = "#/dashboard";
+        }, 150); // 3000 = 3 segundos        
+    });
+    });
+</script>

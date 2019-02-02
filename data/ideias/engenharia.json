@@ -1,0 +1,21 @@
+{
+    "id": "engenharia",
+    "name": "Uso dos Recursos Hídricos",
+    "description": "Durante os últimos anos vem crescendo o índice de poluição contra nossos recursos hídricos, um benefício raro da natureza. Então, a água vem se tornando cada vez mais cara e escassa. Por isso, é importante ter em mente que usá-la racionalmente economiza um bem precioso da natureza. Através de projeto de ideia, estamos buscando ajuda para desenvolver uma campanha sustentável dentro da nossa cidade e de apoio com os patrocinadores",
+    "area": "Engenharia",
+    "image": "img/ideias/hidricos.jpg",
+    "skills": [
+      "Comunicação",
+      "Construir",
+      "Inovar"
+    ],
+    "vote": 9,
+    "participants": [
+      "Marcela Nunes Kuin",
+      "Paulo Junior Mestaki",
+      "Ricardo Oliveira Moura",
+      "Fulano Ciclano de Xaveno",
+      "Hanna Montana de Costa",
+      "Karoline Pereira Mendes"
+    ]
+}

@@ -1,0 +1,35 @@
+Olá, segue os procedimentos para configurar o projeto:
+
+
+Precisa ter o xampp instalado na máquina
+Precisa ter o node.js instalado na máquina
+
+Abra o Prompt de Comando na pasta do projeto (no htdocs) e digite:
+npm init
+
+Logo depois digite:
+npm init --yes
+
+Instale o AngularJS e Bootstrap a seguir:
+npm install angular bootstrap
+
+Instale o angular resource:
+npm install angular-resource
+
+
+Instale o angular route:
+npm install angular-route
+
+Instale o Jquery:
+npm install jquery
+
+Por último, instale o http-server:
+npm install http-server -g
+npm install http-server
+
+
+Caso os procedimentos acima não funcionem corretamente, entre em contato comigo:
+
+Fernando Silva Noleto
+Email: fernandonoleto17@gmail.com
+Projeto completo no Drive: https://drive.google.com/open?id=1qnvm8t-IjC1jwqq9IW6qQrm49xfgIdr2

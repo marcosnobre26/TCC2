@@ -1,0 +1,20 @@
+{
+    "id": "saude-corpo",
+    "name": "Prevenção de doenças - Boas Práticas",
+    "description": "Este projeto atuará em bairros de Palmas, orientando a comunidade a respeito da prevenção de doenças e promoção da saúde, de modo a estimular os indivíduos a serem atuantes nesse processo. As Feiras de Saúde abordarão, de modo teórico e prático, temas sobre hábitos de vida saudáveis.",
+    "area": "Saúde",
+    "image": "img/ideias/saude.png",
+    "skills": [
+      "Comunicação",
+      "Iniciativa",
+      "Gestão"
+    ],
+    "vote": 69,
+    "participants":[
+      "Nunes Antonio Kuin",
+      "Vincete Luis",
+      "Oliveira Moura",
+      "Fulano Ciclano de Xaveno",
+      "Rodrigo Nunes Beel"
+    ]
+}
