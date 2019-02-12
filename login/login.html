@@ -6,29 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-signin-client_id" content="576572641462-baicoff26hre7d8a4u9g7b178jrsubu6.apps.googleusercontent.com">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+	<link rel="icon" type="image/png" href="login/images/icons/favicon.ico"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="login/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="login/vendor/animate/animate.css">
 <!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="login/vendor/css-hamburgers/hamburgers.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="login/vendor/animsition/css/animsition.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="login/vendor/select2/select2.min.css">
 <!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="login/vendor/daterangepicker/daterangepicker.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="login/css/util.css">
+	<link rel="stylesheet" type="text/css" href="login/css/main.css">
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 
-	<script type="text/javascript" src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="login/vendor/jquery/jquery-3.2.1.min.js"></script>
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>   
 <!--===============================================================================================-->
@@ -40,7 +42,7 @@
 <script>
 		window.fbAsyncInit = function() {
 		  FB.init({
-			appId      : '2112994455413586',
+			appId      : '284129805616769',
 			cookie     : true,
 			xfbml      : true,
 			version    : 'v3.2'
@@ -96,24 +98,21 @@
 						'Thanks for logging in, ' + response.name + '!';
 
 
-						var nome;//=nome();
-						var id;//=id();
+						var nome;
+						var id;
 						var foto;
+						var senha=null;
 						nome=response.name;	
-						//nome="nome";	
-						id=response.id;	
-						//id="id";	
-						//foto=response.picture;		
-						foto='https://graph.facebook.com/' + response.id + '/picture?type=large';;		
+						id=response.id;
+						tipo="Facebook";
+						foto='https://graph.facebook.com/' + response.id + '/picture?type=large';		
 						//console.log("nome: "+nome+" - id: "+id+" - foto: "+foto);	
-						//console.log(foto);	
+						
 						
 						$.ajax({
 							type: "POST",
-							url: "perfil.php",
-							data: {nome, id, foto,},
-							//data: "campo1=dado1&campo2=dado2&campo3=dado3",
-							//data: dataString,
+							url: "login/perfil.php",
+							data: {nome, id, foto, tipo, senha},
 							dataType: "html",
 							success: function( data )
 							{
@@ -167,7 +166,7 @@
 	  </script>
 	
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+		<div class="container-login100" style="background-image: url('login/images/bg-01.jpg');">
 			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
 				<form class="login100-form validate-form flex-sb flex-w">
 					<span class="login100-form-title p-b-53">
@@ -188,11 +187,12 @@
 					</fb:login-button>-->
 
 
-					<div class="g-signin2" data-onsuccess="onSignIn"></div>
-					<!--<a href="#" class="btn-google m-b-20">
+					<!--<div class="g-signin2" data-onsuccess="onSignIn"></div>
+					<a href="#" class="btn-google m-b-20">
 						<img src="images/icons/icon-google.png" alt="GOOGLE">
 						Google
 					</a>-->
+					<div id="my-signin2" class="g-signin2" data-onsuccess="onSignIn"></div>
 					
 					<div class="p-t-31 p-b-9">
 						<span class="txt1">
@@ -229,7 +229,7 @@
 							Not a member?
 						</span>
 
-						<a href="#" class="txt2 bo1">
+						<a class="txt2 bo1 btn" data-toggle="modal" data-target="#exampleModal">
 							Sign up now
 						</a>
 					</div>
@@ -237,6 +237,67 @@
 			</div>
 		</div>
 	</div>
+
+<!-- MODAL -->
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+	Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header text-center">
+			<h4 class="modal-title w-100 font-weight-bold">Cadstre-se</h4>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		  <div class="modal-body mx-3">
+			<div class="md-form mb-5">
+			  <i class="fas fa-user prefix grey-text"></i>
+			  <input type="text" id="form34" class="form-control validate">
+			  <label data-error="wrong" data-success="right" for="form34">Informe seu nome:</label>
+			</div>
+	
+			<div class="md-form mb-5">
+			  <i class="fas fa-envelope prefix grey-text"></i>
+			  <input type="email" id="form29" class="form-control validate">
+			  <label data-error="wrong" data-success="right" for="form29">Informe seu email:</label>
+			</div>
+	
+			<div class="md-form mb-5">
+			  <i class="fas fa-tag prefix grey-text"></i>
+			  <input type="text" id="form32" class="form-control validate">
+			  <label data-error="wrong" data-success="right" for="form32">Informe sua senha:</label>
+			</div>
+	
+			<div class="md-form mb-5">
+				<i class="fas fa-tag prefix grey-text"></i>
+				<input type="text" id="form33" class="form-control validate">
+				<label data-error="wrong" data-success="right" for="form32">Repita sua senha:</label>
+			  </div>
+	
+		  </div>
+		  <div class="modal-footer d-flex justify-content-center">
+			<button class="btn btn-unique" onclick="validarInformacoes()">Send
+			</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+<!-- MODAL -->
+
+
+
+
+
 	
 
     <fb:login-button 
@@ -260,6 +321,59 @@
 
 <img src="https://graph.facebook.com/111325383303445/picture?type=large" alt="Smiley face" height="42" width="42">
 
+
+<script>
+	function validarInformacoes(){
+		var nome=$( "#form34" ).val();
+		var id=null;
+		var email=$( "#form29" ).val();
+		var senha1=$( "#form32" ).val();
+		var senha2=$( "#form33" ).val();
+
+		if(nome==null || email==null || senha1==null || senha2==null || nome=="" || email=="" || senha1=="" || senha2==""){
+			alert("Preencha todos os campos para completar o seu cadastro.");
+		}
+		else{
+			//console.log("todos os campos foram preenchidos.");
+			if(senha1==senha2){
+				var senha=senha1;
+				$.ajax({
+					type: "POST",
+					url: "login/perfil.php",
+					data: {nome, id, foto, tipo, senha},
+					dataType: "html",
+					success: function( data )
+					{
+						//alert( data );
+					}
+				});
+			}else{
+				alert("As senhas informadas devem ser iguais. Digite uma senha e repita ela para a confirmação.");
+			}
+			
+		}
+	}
+</script>
+
+<script>
+    function onSuccess(googleUser) {
+      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+    }
+    function onFailure(error) {
+      console.log(error);
+    }
+    function renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 220,
+        'height': 40,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+</script>
 
 <script>
 	$('#face').click(function(event){
@@ -308,21 +422,22 @@
     
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 <!--===============================================================================================-->
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="login/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
+	<script src="login/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="login/vendor/bootstrap/js/popper.js"></script>
+	<script src="login/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
+	<script src="login/vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="login/vendor/daterangepicker/moment.min.js"></script>
+	<script src="login/vendor/daterangepicker/daterangepicker.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/countdowntime/countdowntime.js"></script>
+	<script src="login/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-    <script src="js/main.js"></script>
+	<script src="login/js/main.js"></script>
+	<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
     
     <script>
     
@@ -332,7 +447,30 @@
             console.log('Name: ' + profile.getName());
             console.log('Image URL: ' + profile.getImageUrl());
             console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-        }
+			
+
+			var nome;
+			var id;
+			var foto;
+			var senha=null;
+			nome=profile.getName();	
+			id=profile.getId();		
+			foto=profile.getImageUrl();	
+			tipo="Google";
+			//console.log("nome: "+nome+" - id: "+id+" - foto: "+foto);	
+			
+			
+			$.ajax({
+				type: "POST",
+				url: "login/perfil.php",
+				data: {nome, id, foto, tipo, senha},
+				dataType: "html",
+				success: function( data )
+				{
+					//alert( data );
+				}
+			});
+		}
 	</script>
 	
 
