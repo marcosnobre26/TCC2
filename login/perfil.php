@@ -1,9 +1,10 @@
 <?php
 
-    var_dump($_POST['id']);
+    //var_dump($_POST['id']);
     
     $id=$_POST['id'];
     $nome=$_POST['nome'];
+    $email=$_POST['email'];
     $foto=$_POST['foto'];
     $tipo=$_POST['tipo'];
     $senha=$_POST['senha'];
@@ -24,10 +25,11 @@
 
         if($cont==0){
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);        
-            $stmt = $pdo->prepare("INSERT INTO perfil (nome, foto, id_conta, tipo, senha) VALUES(:nome, :foto, :id_conta, :tipo, :senha)");      
+            $stmt = $pdo->prepare("INSERT INTO perfil (nome, foto, email, id_conta, tipo, senha) VALUES(:nome, :foto, :email, :id_conta, :tipo, :senha)");      
             $stmt->execute(array(
                 ':nome' => $nome,
                 ':foto' => $foto,
+                ':email' => $email,
                 ':id_conta' => $id,
                 ':tipo' => $tipo,
                 ':senha' => $senha
@@ -39,4 +41,17 @@
     } catch(PDOException $e) {
         echo 'Error: ' . $e->getMessage();
     }
-?>
+
+    function input($name, $default = null) {
+
+        if(isset($_GET[$name])) {
+            return $_GET[$name];
+        }
+
+        
+        if(isset($_POST[$name])) {
+            return $_POST[$name];
+        }
+
+        return $default;
+    }

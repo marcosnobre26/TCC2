@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+    <head lang="en">
+        <meta charset="utf-8">
+        <title>Ajax File Upload with jQuery and PHP</title>
+        <link rel="stylesheet" href="style.css" type="text/css" />
+        <script type="text/javascript" src="js/jquery-1.11.3-jquery.min.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-8">
+
+                    <h1>
+                        <a href="#" target="_blank">
+                            <img src="logo.png" width="80px"/>Ajax File Uploading with Database MySql</a>
+                        </h1>
+                    <hr> 
+
+                    <form id="form_funcionario" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+                        <fieldset>
+
+                            <legend>Informações</legend>
+                            <p>
+                                <label for="nome">Nome: <em class="required">(obrigatório)</em></label>
+                                <input name="nome" id="nome" type="text" />
+                            </p>
+                    
+                            <p>
+                                <label for="email">Email Address:</label>
+                                <input name="email" id="email" type="text" />
+                            </p>
+                    
+                        </fieldset>
+                        
+                        
+                        <label for="conteudo">Enviar imagem:</label>
+                        <input type="file" name="pic" accept="image/*">    
+                          <button type="submit">Enviar imagem</button>
+                    </form>  
+
+                    <div id="err"></div>
+                    <hr>
+                    <p>
+                        <a href="https://www.cloudways.com" target="_blank">www.Cloudways.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script>
+
+    
+
+    $('#form_funcionario').submit(function(e){
+
+        console.log("chegou ate aqui para o form");
+
+        e.preventDefault();
+        var formulario = $(this);
+        var retorno = func(formulario);
+
+        function func(dados){
+            //console.log("testado");
+
+            $.ajax({
+                url: "login/login.php", // Url to which the request is send
+                //type: "POST",             // Type of request to be send, called as method
+                //data: dados.serialize(), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+                method: 'post',
+                data: new FormData($('#form_funcionario')[0]),
+                cache: false,
+                contentType: false,
+                processData: false,
+                //async:false,       // To send DOMDocument or non processed data file it is set to false
+                success: function(data)   // A function to be called if request succeeds
+                {
+                    //$('#loading').hide();
+                    $("#message").html(data);
+                    
+                }
+            });
+        }
+    });
+    
+    </script>
+
+</html>
