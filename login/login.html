@@ -257,6 +257,7 @@
 			
 					<div class="md-form mb-5">
 							<img id="imagem" src="http://www.blogcaruaruempauta.com.br/wp-content/uploads/2018/11/imagens-casal-sousa.jpg" alt="Paris">
+
 							<input type="file" name="pic" accept="image/*"><br>
 							<input id="enviarFoto" type="submit" value="Enviar">
 							<input type="reset" value="Apagar">
@@ -264,7 +265,7 @@
 					<div class="md-form mb-5 form-group">
 						<i class="fas fa-user prefix grey-text"></i>
 						<input type="text" id="form34" class="form-control validate">
-						<label data-error="wrong" data-success="right" for="form34">Informe seu nome:</label>
+						<label data-error="wrong" data-success="right" name="form34" for="form34">Informe seu nome:</label>
 					</div>
 			
 					<div class="md-form mb-5 form-group">
@@ -515,6 +516,14 @@
 			function func(dados){
 				//console.log("testado");
 
+				let formData = new FormData();
+
+				formData.append('name', $('#form34').val());
+				//console.log(formData[0].name);
+
+				//formData=new FormData($('#form_funcionario')[0]);
+				//formData=new FormData('name',$('#form34').val()[1]);
+
 				$.ajax({
 					url: "login/login.php", // Url to which the request is send
 					//type: "POST",             // Type of request to be send, called as method
@@ -522,6 +531,8 @@
 					method: 'post',
 					data: new FormData($('#form_funcionario')[0]),
 					//data: $('form_funcionario').serialize(),
+					//data: new FormData($('#form_funcionario')[0]),
+					data: formData,
 					//data: dados,
 					cache: false,
 					contentType: false,

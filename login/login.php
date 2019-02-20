@@ -4,6 +4,7 @@
     var_dump($_POST);
     var_dump($email);
 
+
     if(isset($_FILES['pic']))
     {
         $ext = strtolower(substr($_FILES['pic']['name'],-4)); //Pegando extensão do arquivo
