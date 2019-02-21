@@ -24,6 +24,10 @@ angular.module('projetotcc', ['ngRoute', 'ModuloEscalonamento', 'ModuloAvaliacao
           templateUrl: 'login/formulario.html',
           controller: 'LoginController'
         })
+        .when('/perfil', {
+          templateUrl: 'usuario/perfil.html',
+          controller: 'LoginController'
+        })
         .when('/exercicios-cadastrados', {
           templateUrl: 'escalonamentos/exercicios_prontos.html',
           controller: 'ExerciciosCadastradosController'

@@ -255,35 +255,34 @@
 			<form id="form_funcionario" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
 		  		<div class="modal-body mx-3 form-group">
 			
-					<div class="md-form mb-5">
-							<img id="imagem" src="http://www.blogcaruaruempauta.com.br/wp-content/uploads/2018/11/imagens-casal-sousa.jpg" alt="Paris">
-
-							<input type="file" name="pic" accept="image/*"><br>
-							<input id="enviarFoto" type="submit" value="Enviar">
-							<input type="reset" value="Apagar">
+					<div class="md-form mb-5 mb-img">
+							<div class="quadro">
+								<img id="imagem" src="login/images/avatar-159236_960_720.png" alt="perfil">
+							</div>
+							<input id="input-img" type="file" name="pic" accept="image/*"><br>
 					</div>
 					<div class="md-form mb-5 form-group">
 						<i class="fas fa-user prefix grey-text"></i>
-						<input type="text" id="form34" class="form-control validate">
+						<input type="text" id="form34" name="nome" class="form-control validate">
 						<label data-error="wrong" data-success="right" name="form34" for="form34">Informe seu nome:</label>
 					</div>
 			
 					<div class="md-form mb-5 form-group">
 						<i class="fas fa-envelope prefix grey-text"></i>
-						<input type="email" id="form29" class="form-control validate">
+						<input type="email" id="form29" name="email" class="form-control validate">
 						<label data-error="wrong" data-success="right" for="form29">Informe seu email:</label>
 					</div>
 			
 					<div class="md-form mb-5 form-group">
 						<i class="fas fa-tag prefix grey-text"></i>
-						<input type="text" id="form32" class="form-control validate">
+						<input type="text" id="form32" name="senha1" class="form-control validate">
 						<label data-error="wrong" data-success="right" for="form32">Informe sua senha:</label>
 					</div>
 			
 					<div class="md-form mb-5 form-group">
 						<i class="fas fa-tag prefix grey-text"></i>
-						<input type="text" id="form33" class="form-control validate">
-						<label data-error="wrong" data-success="right" for="form32">Repita sua senha:</label>
+						<input type="text" id="form33" name="senha2" class="form-control validate">
+						<label data-error="wrong" data-success="right" for="form33">Repita sua senha:</label>
 					</div>
 			
 					
@@ -503,50 +502,50 @@
 			});
 		}
 
-		$('#form_funcionario').submit(function(e){
+		$('#form_funcionario').submit(function(e){//aqui pega o formulario de inscrição
 
-			
+
 			e.preventDefault();
-			var formulario = $(this);
-			var retorno = func(formulario);
-			
-			var dados = $(this).closest('#form_funcionario').serialize();
-			console.log(formulario.attr('#form34'));
 
 			function func(dados){
-				//console.log("testado");
-
-				let formData = new FormData();
-
-				formData.append('name', $('#form34').val());
-				//console.log(formData[0].name);
-
-				//formData=new FormData($('#form_funcionario')[0]);
-				//formData=new FormData('name',$('#form34').val()[1]);
-
 				$.ajax({
 					url: "login/login.php", // Url to which the request is send
-					//type: "POST",             // Type of request to be send, called as method
-					//data: dados.serialize(), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
 					method: 'post',
-					data: new FormData($('#form_funcionario')[0]),
-					//data: $('form_funcionario').serialize(),
-					//data: new FormData($('#form_funcionario')[0]),
-					data: formData,
-					//data: dados,
-					cache: false,
+					data: new FormData($('#form_funcionario')[0], $('#form34').val(), $('#form32').val(), $('#form33').val(), $('#form29').val()),
+				  cache: false,
 					contentType: false,
 					processData: false,
-					//async:false,       // To send DOMDocument or non processed data file it is set to false
+					async:false,       // To send DOMDocument or non processed data file it is set to false
 					success: function(data)   // A function to be called if request succeeds
 					{
-						//$('#loading').hide();
-						$("#message").html(data);
-						
+						if(data==200)
+						{
+							$('#form_funcionario').modal('toggle');
+						}
+						else{
+							alert(data);
+						}
 					}
 				});
 			}
 		});
+
+		$("#input-img").change(function() {//aqui escuta a mudança da imagem do formulario
+			readURL(this);//pega esta alteração e envia
+		});
+
+		function readURL(input) {// essa função é chamada quando o input recebe alguma imagem
+
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+
+				reader.onload = function(e) {
+					$('#imagem').attr('src', e.target.result);//isso aqui joga o q o input recebeu para a tag img
+				}
+
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
 
 
 	</script>
@@ -565,10 +564,30 @@
 
 <style>
 
-	#imagem{
-		max-width: 30%;
-		border-radius: 35%;
-		padding: 10px;
+	.quadro{
+		background-color: #aaa;
+		border-radius: 50%;
+		width: 150px;
+		height: 150px;
+		overflow: hidden;
+		position: relative;
+	}
+
+	.quadro img{
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+	}
+
+	#input-img{
+		padding-left: 10px;
+	}
+
+	.mb-img{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 	}
 </style>
 
