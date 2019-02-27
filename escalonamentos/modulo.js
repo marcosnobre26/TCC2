@@ -29,28 +29,28 @@ angular.module('ModuloEscalonamento', ['angular-growl','angularUtils.directives.
     $rootScope.updateDateExercise = function() {
         //var tempoInicial = performance.now();
         $http.post('backend/consultas/listFIFO.php')
-        .success(function(data){
+        .then(function(data){
            var exerciciosFIFO = [];
            exerciciosFIFO = $scope.inserirExerciciosBDnoSession(data);
            var arrayString = JSON.stringify(exerciciosFIFO);
            sessionStorage.setItem("ArrayExerciseFIFO0001", arrayString);       
         });
         $http.post('backend/consultas/listSJF.php')
-        .success(function(data){
+        .then(function(data){
            var exerciciosSJF = [];
            exerciciosSJF = $scope.inserirExerciciosBDnoSession(data);
            var arrayString = JSON.stringify(exerciciosSJF);
            sessionStorage.setItem("ArrayExerciseSJF0002", arrayString);       
         });
         $http.post('backend/consultas/listPrioridade.php')
-        .success(function(data){
+        .then(function(data){
            var exerciciosPrioridade = [];
            exerciciosPrioridade = $scope.inserirExerciciosBDnoSession(data);
            var arrayString = JSON.stringify(exerciciosPrioridade);
            sessionStorage.setItem("ArrayExercisePrioridade0003", arrayString);       
         });
         $http.post('backend/consultas/listRoundRobin.php')
-        .success(function(data) {
+        .then(function(data) {
            var exerciciosRoundRobin = [];
            exerciciosRoundRobin = $scope.inserirExerciciosBDnoSession(data);
            var arrayString = JSON.stringify(exerciciosRoundRobin);
@@ -103,7 +103,7 @@ angular.module('ModuloEscalonamento', ['angular-growl','angularUtils.directives.
 
     $scope.updateDateExercise = function() {
         //var tempoInicial = performance.now();
-        $http.post('backend/consultas/listFIFO.php')
+        /*$http.post('backend/consultas/listFIFO.php')
         .success(function(data){
            var exerciciosFIFO = [];
            exerciciosFIFO = $scope.inserirExerciciosBDnoSession(data);
@@ -133,7 +133,7 @@ angular.module('ModuloEscalonamento', ['angular-growl','angularUtils.directives.
         });
         //var tempoFinal = performance.now() - tempoInicial;
         console.log("Consultando do DB do SQL:");
-        //console.log(tempoFinal);
+        //console.log(tempoFinal);*/
     };
 
     $scope.tratamentodeDadosEntradaProcessos = function ($processoEntrada) {
@@ -403,6 +403,6 @@ angular.module('ModuloEscalonamento', ['angular-growl','angularUtils.directives.
         var arrayString = JSON.stringify($scope.ExercicioSistema);
         sessionStorage.setItem("processosIniciais", arrayString);
     };
-    //$scope.updateAlgoritmo(); //sempre que carregar a página
+    $scope.updateAlgoritmo(); //sempre que carregar a página
     $scope.novaConexao();
   });
